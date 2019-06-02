@@ -31,13 +31,8 @@ public class SpringGrpcApplicationTests {
 	  blockData.setHash("");
 	  blockData.setLinkHash("");
 	  String hash=client.addBlock(blockData);
-	  log.info("@@@ ATB @@@ - Hash del nuevo bloque "+hash);
+	  log.info("\nATB - Hash del nuevo bloque \n hash="+hash);
     assertThat(hash)
     .isNotEqualTo("0");
-  }
-  
-  
-  
-  
-  
+  } 
 }

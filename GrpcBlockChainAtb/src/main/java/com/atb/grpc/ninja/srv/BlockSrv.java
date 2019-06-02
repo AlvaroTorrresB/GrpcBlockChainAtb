@@ -33,5 +33,9 @@ public class BlockSrv{
 		}
 	}
 	
+	public boolean checkBlock(String arg)
+	{
+	return arg.equals(encriptSrv.dummyLinkHashDecode());
+	}
 
 }

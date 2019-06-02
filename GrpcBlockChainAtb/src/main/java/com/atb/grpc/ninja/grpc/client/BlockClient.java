@@ -18,16 +18,12 @@ import io.grpc.ManagedChannelBuilder;
 
 @Component
 public class BlockClient {
-	
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLUE = "\u001B[34m";
 	private static final Logger log =LoggerFactory.getLogger(BlockClient.class);
 	private BlockChainServiceGrpc.BlockChainServiceBlockingStub blockChainServiceBlokingStub;
     @Autowired
     private EncriptSrv encriptSrv;
     @Autowired
     private BlockSrv blockSrv;
-    
 	  @PostConstruct
 	  private void init() {
 	    ManagedChannel managedChannel = ManagedChannelBuilder
@@ -38,25 +34,21 @@ public class BlockClient {
 	    	blockChainServiceBlokingStub =
 	    			BlockChainServiceGrpc.newBlockingStub(managedChannel);
 	    }
-	    
 	  public String addBlock(BlockData block) 
 	  {
-		// Obtenemos el hash del último bloque de la cadena
-	  	// Vamos a obtenerlo de la cadena replicada en Mongo al ser una simulación..
+		// Obtenemos el hash del último bloque de la cadena. Vamos a obtenerlo de la cadena replicada en Mongo al ser una simulación..
 	  	// Pero en una situacion real tendria que decodificarse
 		  block.setLinkHash(encriptSrv.dummyLinkHashDecode());
 		  
 		  //Generamos el hash del nuevo bloque a partir de la data y del hash de enlace
 		  block.setHash(blockSrv.genBlockHash(block));
-		  log.info("@@@ ATB @@@ - Enviamos el nuevo bloque desde el cliente...."+block.toString());
+		  log.info("\n ATB - Enviamos el nuevo bloque desde el cliente...."+block.toString());
 		  BlockConfirm blockConfirm=blockChainServiceBlokingStub.addBlock(
 			  Block.newBuilder()
 			  	.setData(block.getData())
 			  		.setHash(block.getHash())
-			  			.setLinkHash(block.getLinkHash())
-			  				.build()
+			  			.setLinkHash(block.getLinkHash()).build()
 			  );
 		  return blockConfirm.getMessage();
-	  }
-	  
+	  }  
 }

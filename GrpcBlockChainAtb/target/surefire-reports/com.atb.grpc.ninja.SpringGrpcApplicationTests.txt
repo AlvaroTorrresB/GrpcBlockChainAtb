@@ -1,10 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.atb.grpc.ninja.SpringGrpcApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.399 s <<< FAILURE! - in com.atb.grpc.ninja.SpringGrpcApplicationTests
-testAddBlock(com.atb.grpc.ninja.SpringGrpcApplicationTests)  Time elapsed: 0.004 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
-Caused by: java.io.IOException: Failed to bind
-Caused by: java.net.BindException: Address already in use: bind
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.128 s - in com.atb.grpc.ninja.SpringGrpcApplicationTests

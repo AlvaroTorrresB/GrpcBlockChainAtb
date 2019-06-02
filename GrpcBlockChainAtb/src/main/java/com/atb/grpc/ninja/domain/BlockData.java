@@ -37,7 +37,7 @@ public class BlockData {
 	
 	@Override
 	public String toString() {
-		return "Block [data=" + data + ", hash=" + hash + ", linkHash=" + linkHash + "]";
+		return "Block [\n data=" + data + "\n hash=" + hash + "\n linkHash=" + linkHash + "]";
 	}
 	public BlockData(String data, String hash, String linkHash) {
 		this.data = data;
